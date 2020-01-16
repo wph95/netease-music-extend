@@ -7,5 +7,5 @@ RUN echo "**** install Python ****" && \
     if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi && \
     pip3 install pipenv
 WORKDIR /app
-ADD . /app
-RUN pipenv install
+COPY mcli.py Pipfile  /app/
+RUN pipenv install  --deploy --ignore-pipfile
